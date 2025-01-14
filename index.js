@@ -70,8 +70,8 @@ app.put('/api/persons/:id', (request, response, next) => {
   }
 
   Person.findByIdAndUpdate(
-    request.params.id, 
-    person, 
+    request.params.id,
+    person,
     { new: true, runValidators: true, context: 'query' }
   )
     .then(updatedPerson => {
@@ -96,12 +96,12 @@ const errorHandler = (error, request, response, next) => {
 
   if (error.name === 'CastError') {
     return response.status(400).send({ error: 'malformatted id' })
-  } 
+  }
 
   if (error.name === 'ValidationError') {
     return response.status(400).json({ error: error.message })
   }
-  
+
   if (error.name === 'JsonWebTokenError') {
     return response.status(401).json({ error: 'invalid token' })
   }

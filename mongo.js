@@ -40,6 +40,6 @@ if (process.argv.length > 3){
     console.log(`added ${result.name} number ${result.number} to phonebook`)
     mongoose.connection.close()
   })
-  .catch((err) => console.log(err))
+    .catch((err) => console.log(err))
 }
 
